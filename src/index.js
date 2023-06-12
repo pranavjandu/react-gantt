@@ -97,7 +97,7 @@ export default class ReactGantt extends Component {
 
   handleResize() {
     this.setState({ timelineWidth: 0 });
-    this.setState({ timelineWidth: this.refs.timeline.offsetWidth });
+    this.setState({ timelineWidth: 1694 });
   }
 
   render() {

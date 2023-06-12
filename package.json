@@ -1,11 +1,11 @@
 {
-  "name": "react-gantt",
-  "version": "2.1.8",
+  "name": "react-gantt-month",
+  "version": "2.2.2",
   "description": "Gantt chart react component",
-  "homepage": "https://github.com/codejamninja/react-gantt",
+  "homepage": "https://github.com/pranavjandu/react-gantt",
   "bugs": {
-    "url": "https://github.com/codejamninja/react-gantt/issues",
-    "email": "jam@codejam.ninja"
+    "url": "https://github.com/pranavjandu/react-gantt/issues",
+    "email": "pranav.jandu@gmail.com"
   },
   "license": "MIT",
   "author": {
@@ -13,13 +13,20 @@
     "email": "jam@codejam.ninja",
     "url": "https://codejam.ninja"
   },
+  "contributors": [
+    {
+      "name": "Pranav Jandu",
+      "email": "pranav.jandu@gmail.com",
+      "url": "https://github.com/pranavjandu"
+    }
+  ],
   "main": "lib/index.js",
   "files": [
     "lib"
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/codejamninja/react-gantt"
+    "url": "https://github.com/pranavjandu/react-gantt"
   },
   "scripts": {
     "build": "npm run build:demo && babel src -d lib",
@@ -34,10 +41,10 @@
   "dependencies": {
     "autobind-decorator": "^2.1.0",
     "lodash": "^4.17.10",
-    "moment": "^2.22.1",
+    "moment": "2.27.0",
     "prop-types": "^15.6.1",
-    "react": "^16.3.2",
-    "react-dom": "^16.3.2"
+    "react": "^16.12.0",
+    "react-dom": "^16.12.0"
   },
   "devDependencies": {
     "babel-cli": "^6.26.0",

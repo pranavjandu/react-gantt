@@ -138,7 +138,8 @@ export default class GanttRow extends Component {
         activeStep: this.getStepFromTime(markerTime)
       });
     }
-  }
+}
+
 
   calculateBarStyle(barStyle) {
     barStyle = _.clone(barStyle);
@@ -163,6 +164,7 @@ export default class GanttRow extends Component {
     const pixelPerSecond = timelineDuration / timelineWidth;
     return pixelPerSecond * width;
   }
+
 
   renderPopup() {
     const { popupStyle, title, description } = this.props;

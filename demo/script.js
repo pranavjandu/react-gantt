@@ -4,84 +4,91 @@ import { render } from 'react-dom';
 import ReactGantt, { GanttRow } from '../src';
 
 class Demo extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+    };
+  }
+
   render() {
     return (
       <div>
         <ReactGantt
           templates={{
-            myTasks: {
-              title: 'My Tasks',
+            inProgress: {
+              title: 'In Progress',
               steps: [
                 {
-                  name: 'Task Phase One',
-                  color: '#0099FF'
+                  color: '#E50000'
                 },
                 {
-                  name: 'Task Phase Two',
-                  color: '#FF9900'
+                  color: '#757575'
+                }
+              ]
+            },
+            completed: {
+              title: 'Completed',
+              steps: [
+                {
+                  color: '#E50000'
                 }
               ]
             }
           }}
-          leftBound={moment()
-            .set({ hour: 0, date: 30, month: 5, year: 2016 })
-            .toDate()}
-          rightBound={moment()
-            .set({ hour: 0, date: 29, month: 8, year: 2016 })
-            .toDate()}
-          dateFormat="YYYY-MM-DD"
-          debug={false}
+          leftBound={moment().set({ date: 1, month: 3, year: 2022})}
+          rightBound={moment().set({ date: 31, month: 2, year: 2023})}
+          monthFormat="MMM"
         >
           <GanttRow
             title="Task 1"
-            description="Task description 1"
-            templateName="myTasks"
+            templateName="inProgress"
             steps={[
-              moment()
-                .set({ hour: 0, date: 1, month: 6, year: 2016 })
-                .toDate(),
-              moment()
-                .set({ hour: 0, date: 4, month: 8, year: 2016 })
-                .toDate(),
-              moment()
-                .set({ hour: 0, date: 17, month: 8, year: 2016 })
-                .toDate()
+              moment().set({ date: 1, month: 3, year: 2022}),
+              moment().set({ date: 1, month: 4, year: 2022}),
+              moment().set({month: 6, year: 2022})
             ]}
+            markerStyle={{
+              width: '0px',
+              backgroundColor: '#000000'
+            }}
+            barStyle={{
+              height: '20px',
+              marginTop: '10px',
+              marginBottom: '10px'
+            }}
           />
           <GanttRow
             title="Task 2"
-            description="Task description 2"
-            templateName="myTasks"
+            templateName="completed"
             steps={[
-              moment()
-                .set({ hour: 0, date: 27, month: 2, year: 2016 })
-                .toDate(),
-              moment()
-                .set({ hour: 0, date: 9, month: 7, year: 2016 })
-                .toDate(),
-              moment()
-                .set({ hour: 0, date: 22, month: 7, year: 2016 })
-                .toDate()
+              moment().set({ date: 15, month: 6, year: 2022}),
+              moment().set({ date: 30, month: 8, year: 2022})
             ]}
+            markerStyle={{
+              width: '0px'
+            }}
+            barStyle={{
+              height: '20px',
+              marginTop: '10px',
+              marginBottom: '10px'
+            }}
           />
           <GanttRow
             title="Task 3"
-            description="Task description 3"
-            templateName="myTasks"
+            templateName="inProgress"
             steps={[
-              moment()
-                .set({ hour: 0, date: 12, month: 6, year: 2016 })
-                .toDate(),
-              moment()
-                .set({ hour: 0, date: 2, month: 7, year: 2016 })
-                .toDate(),
-              moment()
-                .set({ hour: 0, date: 2, month: 8, year: 2016 })
-                .toDate(),
-              moment()
-                .set({ hour: 0, date: 24, month: 9, year: 2016 })
-                .toDate()
+              moment().set({ date: 1, month: 9, year: 2022}),
+              moment().set({ date: 12, month: 0, year: 2023}),
+              moment().set({ date: 16, month: 1, year: 2023})
             ]}
+            markerStyle={{
+              width: '0px'
+            }}
+            barStyle={{
+              height: '20px',
+              marginTop: '10px',
+              marginBottom: '10px'
+            }}
           />
         </ReactGantt>
       </div>

@@ -5,6 +5,14 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
+## [2.2.2] - 2023-06-12
+### Fixed
+* Duration width fix for Month
+
+## [2.2.0] - 2023-06-11
+### Fixed
+* month tick bug
+
 ## [2.1.6] - 2018-06-25
 ### Added
 * prepublish script

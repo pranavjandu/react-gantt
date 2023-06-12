@@ -40,7 +40,7 @@ export default class GanttTimeline extends Component {
       }
     }
     return {
-      width: this.durationToWidth(this.units[unit]),
+      width: this.durationToWidth(),
       unit,
       count: tickCount
     };
@@ -76,27 +76,18 @@ export default class GanttTimeline extends Component {
     return null;
   }
 
-  units = {
-    minute: 60,
-    hour: 3600,
-    day: 86400,
-    week: 604800,
-    month: 2628000,
-    year: 31535965.4396976
-  };
-
-  durationToWidth(duration) {
-    const { leftBound, rightBound, timelineWidth } = this.context;
-    const timelineDuration = moment(rightBound).diff(leftBound, 'seconds');
-    const percentage = duration > 0 ? duration / timelineDuration : 0;
-    return timelineWidth * percentage;
-  }
-
-  widthToDuration(width) {
-    const { leftBound, rightBound, timelineWidth } = this.context;
-    const timelineDuration = moment(rightBound).diff(leftBound, 'seconds');
-    const pixelPerSecond = timelineDuration / timelineWidth;
-    return pixelPerSecond * width;
+  getTickTime(tick, index) {
+    const { leftBound } = this.context;
+    if(tick.unit === 'month'){
+      return moment(leftBound).add(
+        index,
+        'months'
+      );
+    }
+    return moment(leftBound).add(
+      this.widthToDuration(tick.width) * index,
+      'seconds'
+    );
   }
 
   debugRender() {
@@ -159,19 +150,26 @@ export default class GanttTimeline extends Component {
     );
   }
 
-  getTickTime(tick, index) {
-    const { leftBound } = this.context;
-    if(tick.unit === 'month'){
-      return moment(leftBound).add(
-        index,
-        'months'
-      );
-    }
-    return moment(leftBound).add(
-      this.widthToDuration(tick.width) * index,
-      'seconds'
-    );
+  widthToDuration(width) {
+    const { leftBound, rightBound, timelineWidth } = this.context;
+    const timelineDuration = moment(rightBound).diff(leftBound, 'seconds');
+    const pixelPerSecond = timelineDuration / timelineWidth;
+    return pixelPerSecond * width;
   }
+
+  durationToWidth() {
+    const { timelineWidth } = this.context;
+    return timelineWidth * 0.08333333;
+  }
+
+  units = {
+    minute: 60,
+    hour: 3600,
+    day: 86400,
+    week: 604800,
+    month: 2628000,
+    year: 31535965.4396976
+  };
 
   renderTickLabel(tick, index) {
     const tickTime = this.getTickTime(tick, index);
